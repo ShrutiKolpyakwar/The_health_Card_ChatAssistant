@@ -6,7 +6,7 @@ export const sendMessage = async (
 
   const response =
     await axios.post(
-      "http://localhost:5000/api/chat",
+      "https://the-health-card-chatassistant.onrender.com/",
       {
         symptom
       }
