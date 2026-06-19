@@ -46,6 +46,21 @@
 
 // module.exports = router;
 
+const symptomMap = {
+  "ear pain": "ear pain",
+  "pain in ear": "ear pain",
+  "earache": "ear pain",
+
+  "skin rash": "skin rash",
+  "rash": "skin rash",
+
+  "chest pain": "chest pain",
+  "pain in chest": "chest pain",
+
+  "hair fall": "hair loss",
+  "hairfall": "hair loss"
+};
+
 const express = require("express");
 
 const router = express.Router();
@@ -66,23 +81,17 @@ router.post("/", (req, res) => {
 
   console.log("Normalized:", normalizedInput);
 
-  const matchedProviders = providers.filter(provider =>
-    provider.symptoms.some(item => {
-      const symptomText = item.toLowerCase();
+ const matchedProviders = providers.filter(provider =>
+  provider.symptoms.some(item => {
+    const symptomText = item.toLowerCase().trim();
 
-      return (
-        normalizedInput.includes(symptomText) ||
-        symptomText.includes(normalizedInput) ||
-        normalizedInput
-          .split(" ")
-          .some(word =>
-            word.length > 2 &&
-            symptomText.includes(word)
-          )
-      );
-    })
-  );
-
+    return (
+      normalizedInput === symptomText ||
+      normalizedInput.includes(symptomText) ||
+      symptomText.includes(normalizedInput)
+    );
+  })
+);
   console.log("Matches:", matchedProviders);
 
   if (matchedProviders.length === 0) {
