@@ -1,0 +1,10 @@
+{
+  "headache": ["MRI"],
+  "migraine": ["MRI"],
+  "chest pain": ["Echo"],
+  "heart pain": ["Echo"],
+  "back pain": ["MRI"],
+  "stomach pain": ["Ultrasound"],
+  "dizziness": ["MRI"],
+  "body pain": ["X-Ray"]
+}
