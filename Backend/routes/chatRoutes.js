@@ -25,10 +25,7 @@ router.post("/", (req, res) => {
 
   const userInput = normalize(symptom);
 
-  // =========================
   // PHONE / LOCATION SEARCH
-  // =========================
-
   const wantsPhone =
     userInput.includes("phone") ||
     userInput.includes("contact") ||
@@ -45,9 +42,7 @@ router.post("/", (req, res) => {
 
     let matchedProviders = [];
 
-    // =========================
-    // 1. Exact Provider Name Match
-    // =========================
+    // Exact Provider Name Match
 
     const exactNameMatches = providers.filter(provider => {
       const providerName = normalize(provider.name);
@@ -62,9 +57,7 @@ router.post("/", (req, res) => {
       matchedProviders = exactNameMatches;
     } else {
 
-      // =========================
-      // 2. Fuzzy Provider Name Match
-      // =========================
+      // Fuzzy Provider Name Match
 
       let bestProvider = null;
       let bestNameScore = 0;
@@ -89,9 +82,7 @@ router.post("/", (req, res) => {
 
       } else {
 
-        // =========================
         // 3. Specialty Match
-        // =========================
 
         matchedProviders = providers.filter(provider =>
           userInput.includes(provider.specialty.toLowerCase())
@@ -99,10 +90,7 @@ router.post("/", (req, res) => {
       }
     }
 
-    // =========================
     // Return Results
-    // =========================
-
     if (matchedProviders.length > 0) {
 
       const result = matchedProviders
@@ -133,9 +121,8 @@ router.post("/", (req, res) => {
     });
   }
 
-  // =========================
+
   // SYMPTOM MATCHING
-  // =========================
 
   let bestProvider = null;
   let bestScore = 0;
