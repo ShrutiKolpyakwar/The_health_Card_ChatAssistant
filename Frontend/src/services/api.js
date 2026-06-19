@@ -6,7 +6,7 @@ export const sendMessage = async (
 
   const response =
     await axios.post(
-      "https://healthcard-ee1c2xby7-shrutikolpyakwars-projects.vercel.app/",
+      "http://localhost:5000/api/chat",
       {
         symptom
       }
