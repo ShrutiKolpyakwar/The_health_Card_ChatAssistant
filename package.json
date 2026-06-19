@@ -9,5 +9,8 @@
   },
   "devDependencies": {
     "concurrently": "^9.0.0"
+  },
+  "dependencies": {
+    "string-similarity": "^4.0.4"
   }
 }
