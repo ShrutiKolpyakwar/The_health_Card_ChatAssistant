@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const sendMessage = async (symptom) => {
   const response = await axios.post(
-    "https://health-card-chatassistant.netlify.app/api/chat",
+    "https://the-health-card-chatassistant.onrender.com/api/chat",
     {
       symptom
     }
