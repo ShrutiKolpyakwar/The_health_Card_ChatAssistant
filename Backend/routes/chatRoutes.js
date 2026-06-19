@@ -25,7 +25,42 @@ router.post("/", (req, res) => {
 
   const userInput = normalize(symptom);
 
+  // =========================
+// SHOW ALL PROVIDERS
+// =========================
+
+if (
+  userInput.includes("all providers") ||
+  userInput.includes("all doctors") ||
+  userInput.includes("all specialties") ||
+  userInput.includes("all services") ||
+  userInput.includes("provider list") ||
+  userInput.includes("give me all providers")
+) {
+  const providerList = providers
+    .map(provider => {
+      const services = provider.services
+        ? provider.services.join(", ")
+        : "Services not available";
+
+      return `
+🏥 ${provider.name}
+🩺 ${provider.specialty}
+🔧 Services: ${services}
+      `;
+    })
+    .join("\n\n");
+
+  return res.json({
+    message: providerList,
+    providers: []
+  });
+}
+
+  // =========================
   // PHONE / LOCATION SEARCH
+  // =========================
+
   const wantsPhone =
     userInput.includes("phone") ||
     userInput.includes("contact") ||
@@ -39,12 +74,13 @@ router.post("/", (req, res) => {
     userInput.includes("where");
 
   if (wantsPhone || wantsLocation) {
-
     let matchedProviders = [];
 
-    // Exact Provider Name Match
+    // --------------------------------
+    // 1. Exact Provider Name Match
+    // --------------------------------
 
-    const exactNameMatches = providers.filter(provider => {
+    matchedProviders = providers.filter(provider => {
       const providerName = normalize(provider.name);
 
       return (
@@ -53,46 +89,81 @@ router.post("/", (req, res) => {
       );
     });
 
-    if (exactNameMatches.length > 0) {
-      matchedProviders = exactNameMatches;
-    } else {
+    // --------------------------------
+    // 2. Partial Provider Name Match
+    // --------------------------------
 
-      // Fuzzy Provider Name Match
+    if (matchedProviders.length === 0) {
+      matchedProviders = providers.filter(provider => {
+        const words = normalize(provider.name)
+          .split(" ")
+          .filter(word => word.length > 3);
 
-      let bestProvider = null;
-      let bestNameScore = 0;
-
-      providers.forEach(provider => {
-        const score = stringSimilarity.compareTwoStrings(
-          userInput,
-          normalize(provider.name)
+        const matchedWords = words.filter(word =>
+          userInput.includes(word)
         );
 
-        if (score > bestNameScore) {
-          bestNameScore = score;
+        return matchedWords.length >= 2;
+      });
+    }
+
+    // --------------------------------
+    // 3. Specialty Match
+    // --------------------------------
+
+    if (matchedProviders.length === 0) {
+      matchedProviders = providers.filter(provider =>
+        userInput.includes(
+          normalize(provider.specialty)
+        )
+      );
+    }
+
+    // --------------------------------
+    // 4. Fuzzy Provider Name Match
+    // --------------------------------
+
+    if (matchedProviders.length === 0) {
+      let bestProvider = null;
+      let bestScore = 0;
+
+      providers.forEach(provider => {
+        const score =
+          stringSimilarity.compareTwoStrings(
+            userInput,
+            normalize(provider.name)
+          );
+
+        if (score > bestScore) {
+          bestScore = score;
           bestProvider = provider;
         }
       });
 
-      if (bestProvider && bestNameScore > 0.45) {
-
-        matchedProviders = providers.filter(
-          p => normalize(p.name) === normalize(bestProvider.name)
-        );
-
-      } else {
-
-        // 3. Specialty Match
-
-        matchedProviders = providers.filter(provider =>
-          userInput.includes(provider.specialty.toLowerCase())
-        );
+      if (bestProvider && bestScore > 0.35) {
+        matchedProviders = [bestProvider];
       }
     }
 
-    // Return Results
-    if (matchedProviders.length > 0) {
+    // --------------------------------
+    // 5. Location Filter
+    // --------------------------------
 
+    const locationMatches = matchedProviders.filter(provider =>
+      userInput.includes(
+        normalize(provider.location)
+      )
+    );
+
+    if (locationMatches.length > 0) {
+      matchedProviders = locationMatches;
+    }
+
+    // --------------------------------
+    // Return Results
+    // --------------------------------
+
+    if (matchedProviders.length > 0) {
       const result = matchedProviders
         .map(provider => {
           let text = `🏥 ${provider.name}`;
@@ -116,23 +187,26 @@ router.post("/", (req, res) => {
     }
 
     return res.json({
-      message: "Sorry, I couldn't find a provider matching your request.",
+      message:
+        "Sorry, I couldn't find a provider matching your request.",
       providers: []
     });
   }
 
-
+  // =========================
   // SYMPTOM MATCHING
+  // =========================
 
   let bestProvider = null;
   let bestScore = 0;
 
   providers.forEach(provider => {
     provider.symptoms.forEach(providerSymptom => {
-      const score = stringSimilarity.compareTwoStrings(
-        userInput,
-        providerSymptom.toLowerCase()
-      );
+      const score =
+        stringSimilarity.compareTwoStrings(
+          userInput,
+          providerSymptom.toLowerCase()
+        );
 
       if (score > bestScore) {
         bestScore = score;

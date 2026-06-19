@@ -17,6 +17,18 @@
     "10% off Seborrhoeic Keratosis removal",
     "10% off Lipoma excision/removal"
   ],
+        "services": [
+  "Clinic Consultation",
+  "Skin Tag Removal",
+  "Mole Removal",
+  "Wart Removal",
+  "Seborrhoeic Keratosis Removal",
+  "Lipoma Excision",
+  "Cyst Excision",
+  "Xanthelasma Removal",
+  "Basal Cell Carcinoma Excision",
+  "Hair Transplants"
+],
   "symptoms": [
     "acne",
     "skin rash",
@@ -41,6 +53,25 @@
       "10% off ECG",
       "10% off Echocardiogram"
     ],
+
+    
+  "services": [
+    "Consultant Consultation",
+    "ECG",
+    "Echocardiogram",
+    "Carotid Doppler",
+    "Cardiac Monitors",
+    "24-Hour Ambulatory Blood Pressure Monitoring",
+    "Stress Testing",
+    "MRI",
+    "CT Scan",
+    "Healthy Heart Screening",
+    "Metabolic Health Screening",
+    "Cardiac Ablation",
+    "TAVI",
+    "Coronary Angiography"
+  ],
+
     "symptoms": [
       "chest pain",
       "MRI",
@@ -64,6 +95,15 @@
       "10% off CT Scan",
       "10% off Health Screening"
     ],
+
+      "services": [
+  "MRI Services",
+  "Cardiac Tests",
+  "Scans & Imaging",
+  "Screening & Specialist Tests",
+  "Other Services"
+],
+
     "symptoms": [
       "MRI scan",
       "CT scan",
@@ -87,6 +127,24 @@
       "10% off Health Screening",
       "10% off Blood Tests"
     ],
+
+     "services": [
+  "Private GP (Clinic, Video & Home Visit Consultations)",
+  "Health Screening",
+  "Joint Injections",
+  "Women's Health",
+  "Men's Health",
+  "Women's Pelvic Health",
+  "Blood Tests",
+  "Medical Reports",
+  "Medical Assessments",
+  "Vaccinations",
+  "Sexual Health Screening",
+  "Physiotherapy",
+  "Podiatry",
+  "Psychological Therapy",
+  "Consultant Specialists"
+],
     "symptoms": [
       "Joint Injections",
       "cough",
@@ -109,6 +167,22 @@
       "15% off New Patient Consultation",
       "10% off Follow Up Consultation"
     ],
+
+      "services": [
+  "Initial Consultation",
+  "Kidney Stone Procedures",
+  "Cystoscopy",
+  "Enlarged Prostate",
+  "Prostate Procedures",
+  "Lower Urinary Tract Symptoms",
+  "Haematuria",
+  "Bladder Problems",
+  "Testicular Problems",
+  "Circumcision",
+  "Scrotal Lumps",
+  "Urinary Tract Infections",
+  "Vasectomy"
+],
     "symptoms": [
       "kidney stones",
       "urinary infection",
@@ -131,6 +205,21 @@
       "10% off Consultation",
       "10% off Diagnostic Assessment"
     ],
+
+    "services": [
+  "Initial Consultation",
+  "Lower Urinary Tract Symptoms",
+  "Cystoscopy",
+  "Prostate Cancer",
+  "Enlarged Prostate",
+  "Prostate Procedures",
+  "Kidney Stone Procedures",
+  "Haematuria",
+  "Urinary Tract Infections",
+  "Erectile Dysfunction",
+  "Bladder Problems",
+  "Testicular Problems"
+],
     "symptoms": [
       "prostate cancer",
       "kidney stones",
@@ -153,6 +242,22 @@
       "10% off Cardiac Screening",
       "10% off ECG"
     ],
+
+      "services": [
+      "Cardiac Screening",
+      "ECG",
+      "Echocardiogram",
+      "Heart Murmurs",
+      "Chest Pain",
+      "Palpitations",
+      "Dizziness & Fainting",
+      "Sports Cardiology Screening",
+      "Paediatric ECG",
+      "Paediatric Echocardiogram",
+      "Autonomic Dysfunction",
+      "POTS"
+],
+
     "symptoms": [
       "chest pain",
       "heart murmur",
@@ -175,6 +280,25 @@
       "15% off New Consultation",
       "10% off Follow Up"
     ],
+
+    "services": [
+  "Clinic Consultation",
+  "Abdominal Pain",
+  "Chronic Diarrhoea",
+  "Ulcerative Colitis",
+  "Crohns Disease",
+  "Achalasia",
+  "Dyspepsia",
+  "Acid Reflux",
+  "Dysphagia",
+  "Irritable Bowel Syndrome",
+  "Jaundice",
+  "Liver Function Blood Test Abnormalities",
+  "Biliary Problems",
+  "Gastroscopy",
+  "Colonoscopy",
+  "Polypectomy"
+],
     "symptoms": [
       "abdominal pain",
       "acid reflux",
@@ -197,6 +321,23 @@
       "10% off ENT Consultation",
       "10% off Hearing Assessment"
     ],
+
+  "services": [
+  "Clinic Consultation",
+  "Nasal Symptoms",
+  "Sinusitis",
+  "Nasal Polyps",
+  "Snoring",
+  "Septal Deviation",
+  "Septorhinoplasty",
+  "Hearing Loss",
+  "Tinnitus",
+  "Ear Symptoms",
+  "Voice Issues",
+  "Nasal Tumours",
+  "CSF Leak",
+  "Skull Base Surgery"
+],
     "symptoms": [
       "hearing loss",
       "ear pain",
@@ -220,6 +361,15 @@
       "10% off CT Scan",
       "10% off Health Screening"
     ],
+
+  "services": [
+  "MRI Services",
+  "Cardiac Tests",
+  "Scans & Imaging",
+  "Screening & Specialist Tests",
+  "Other Services"
+],
+
     "symptoms": [
       "MRI",
       "CT scan",
@@ -228,6 +378,7 @@
       "Ultrasound",
       "LiverMultiScan"
     ]
+  
   },
   {
     "id": 11,
@@ -243,6 +394,14 @@
       "10% off Ultrasound",
       "10% off Health Screening"
     ],
+
+  "services": [
+  "MRI",
+  "Ultrasound",
+  "Echocardiogram",
+  "Health Screening",
+  "Cardiac Tests"
+],
     "symptoms": [
       "MRI",
       "ultrasound",
